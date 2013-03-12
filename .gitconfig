@@ -1,3 +1,8 @@
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
 [alias]
 	st = status
 	ci = commit
@@ -5,3 +10,5 @@
 	co = checkout
 	df = diff
 	lg = log -p
+[diff]
+	renames = true
