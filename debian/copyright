@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 
-Files: *
+Files: debian/*
 Copyright: © 2013 Laurent Arnoud <laurent.arnoud@af83.com>
 License: GPL-2+
 
