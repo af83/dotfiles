@@ -1,0 +1,18 @@
+Source: dotfiles
+Priority: optional
+Section: misc
+Maintainer: Laurent Arnoud <laurent.arnoud@af83.com>
+Uploaders: Laurent Arnoud <laurent.arnoud@af83.com>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.9.1
+Vcs-Browser: https://github.com/AF83/dotfiles
+Vcs-Git: git://github.com/AF83/dotfiles.git
+
+Package: dotfiles
+Architecture: all
+Section: misc
+Depends: vim, screen, tmux, htop, tree, sysstat
+Description: af83 metapackage for development servers
+ This package makes life easier between devops and sysadmins.
+ .
+ Includes configuration and some rc files.

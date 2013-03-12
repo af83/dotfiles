@@ -1,0 +1,71 @@
+#!/usr/bin/make -f
+# debian/rules for dotfiles
+# This file is public domain software, originally written by Andreas Tille.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+pkg=dotfiles
+VERSION := $(shell grep '^dotfiles *(.\+)' debian/changelog | head -n 1 | sed 's/^dotfiles \+(\(.\+\)) .*/\1/' )
+DISTDIR := $(pkg)-$(VERSION)
+
+build: build-stamp
+build-stamp:
+	dh_testdir
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean
+	dh_installdirs
+	dh_install
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+	dh_installman
+	dh_lintian
+	dh_link
+	dh_compress -X.pdf
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+# Build architecture-dependent files here.
+binary-arch: build install
+# We have nothing to do by default.
+
+dist:
+	if [ ! -f debian/changelog ] ; then \
+	    echo "File debian/changelog is missing. Something is wrong!" ; \
+	    exit -1 ; \
+	fi
+	if [ "$(VERSION)" = "" ] ; then \
+	    echo "Unable to obtain version number from debian/changelog. Something is wrong!" ; \
+	    exit -1 ; \
+	fi ;
+	rm -rf $(DISTDIR)
+	mkdir $(DISTDIR)
+	chmod 777 $(DISTDIR)
+	rsync -a --exclude $(DISTDIR) --exclude .git * $(DISTDIR)
+	rm -f `find . -name "*~"`
+	GZIP=-9 tar -czf ../$(pkg)_$(VERSION).tar.gz $(DISTDIR)
+	rm -rf $(DISTDIR)
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install
