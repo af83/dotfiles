@@ -9,6 +9,8 @@
 	br = branch
 	co = checkout
 	df = diff
+        fe = fetch -p -a
+        sh = show
 	lg = log -p
 [diff]
 	renames = true
