@@ -97,3 +97,5 @@ endif
 
 set wildmenu
 set wildignore+=*.o,*.so,*.a,.svn,*.pyc
+set listchars=tab:»·,trail:·,precedes:»,extends:«
+set list
