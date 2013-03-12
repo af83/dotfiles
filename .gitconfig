@@ -12,3 +12,5 @@
 	lg = log -p
 [diff]
 	renames = true
+[push]
+	default=tracking
