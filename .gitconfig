@@ -1,19 +1,19 @@
 # vim: noexpandtab
 
 [color]
-	status = auto
-	diff = auto
 	branch = auto
+	diff = auto
 	interactive = auto
+	status = auto
 [alias]
-	st = status
-	ci = commit
 	br = branch
+	ci = commit
 	co = checkout
 	df = diff
 	fe = fetch -p -a
-	sh = show
 	lg = log -p
+	sh = show
+	st = status
 [diff]
 	renames = true
 [push]
