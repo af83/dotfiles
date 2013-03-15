@@ -1,3 +1,5 @@
+# vim: filetype=sh
+
 export EDITOR=vim
 alias be='bundle exec'
 alias less='less -R'
