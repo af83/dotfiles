@@ -1,3 +1,5 @@
+# vim: noexpandtab
+
 [color]
 	status = auto
 	diff = auto
@@ -9,8 +11,8 @@
 	br = branch
 	co = checkout
 	df = diff
-        fe = fetch -p -a
-        sh = show
+	fe = fetch -p -a
+	sh = show
 	lg = log -p
 [diff]
 	renames = true
