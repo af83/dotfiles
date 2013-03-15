@@ -6,14 +6,37 @@
 	interactive = auto
 	status = auto
 [alias]
+	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
+	ap = add patch
 	br = branch
 	ci = commit
 	co = checkout
+	cpk = cherry-pick
 	df = diff
+	ds = diff --staged
 	fe = fetch -p -a
+	irb = rebase --interactive
 	lg = log -p
+
+	; List ignored files
+	ls-ignored = ls-files --exclude-standard --ignored --others
+
+	# List modified files
+	ls-modified = ls-files --modified
+
+	; List untracked files
+	ls-untracked = ls-files --others --exclude-standard
+
+	pr = pull-rebase
+	rbc = rebase --continue
 	sh = show
 	st = status
+	undo = reset --soft HEAD^
+	unstage = reset HEAD --
+
+	; Editing/adding conflicted files
+	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+	add-unmerged  = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 [diff]
 	renames = true
 [push]
