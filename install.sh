@@ -13,17 +13,20 @@ update_dotfile() {
 }
 
 for f in $FILES; do
-	first_car=$(echo $f | awk '{print substr($0,0,1)}')
-	if [ "$first_car" = "." ]; then
-		if [ -f ~/$f ]; then
-			read -p "~/$f already exists, overwrite it ? (y/n) : " update
-			if [ "$update" = "y" ]; then
-				update_dotfile $f
+	case $f in
+		.*)
+			if [ -f ~/$f ]; then
+				read -p "~/$f already exists, overwrite it ? (y/n) : " update
+				if [ "$update" = "y" ]; then
+					update_dotfile $f
+				else
+					echo "Skipping $f."
+				fi
 			else
-				echo "Skipping $f."
+				update_dotfile $f
 			fi
-		else
-			update_dotfile $f
-		fi
-	fi
+			;;
+		*)
+			;;
+	esac
 done
