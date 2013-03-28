@@ -4,7 +4,7 @@ REPOSITORY_NAME='AF83/dotfiles'
 REPOSITORY_URL="https://github.com/${REPOSITORY_NAME}"
 
 # Get file list over HTTP.
-FILES=`wget -qO- $REPOSITORY_URL | grep js-directory-link | sed "s/.* title=\"\(.*\)\".*/\1/"`
+FILES=$(wget -qO- $REPOSITORY_URL | grep js-directory-link | sed "s/.* title=\"\(.*\)\".*/\1/")
 
 update_dotfile() {
 	FILE=$1
@@ -13,7 +13,7 @@ update_dotfile() {
 }
 
 for f in $FILES; do
-	first_car=`echo $f | awk '{print substr($0,0,1)}'`
+	first_car=$(echo $f | awk '{print substr($0,0,1)}')
 	if [ "$first_car" = "." ]; then
 		if [ -f ~/$f ]; then
 			read -p "~/$f already exists, overwrite it ? (y/n) : " update
