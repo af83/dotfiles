@@ -4,7 +4,7 @@ REPOSITORY_NAME='AF83/dotfiles'
 REPOSITORY_URL="https://github.com/${REPOSITORY_NAME}"
 
 # Get file list over HTTP.
-FILES=`curl -s $REPOSITORY_URL | grep js-directory-link | sed "s/.* title=\"\(.*\)\".*/\1/"`
+FILES=`wget -qO- $REPOSITORY_URL | grep js-directory-link | sed "s/.* title=\"\(.*\)\".*/\1/"`
 
 update_dotfile() {
 	FILE=$1
