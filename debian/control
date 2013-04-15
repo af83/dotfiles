@@ -11,7 +11,7 @@ Vcs-Git: git://github.com/AF83/dotfiles.git
 Package: dotfiles
 Architecture: all
 Section: misc
-Depends: vim, screen, tmux, htop, tree, sysstat, iptraf, curl, zsh
+Depends: vim, screen, tmux, htop, tree, sysstat, iptraf, curl, zsh, ack-grep
 Description: af83 metapackage for development servers
  This package makes life easier between devops and sysadmins.
  .
